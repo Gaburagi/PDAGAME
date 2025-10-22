@@ -19,7 +19,6 @@ func _ready():
 		cam.set("smoothing/speed", 6.0)
 		cam.set("smoothing/limit_smoothed", true)
 
-
 func _input(event):
 	if event.is_action_pressed("jump") and is_on_floor():
 		velocity.y = jump_power * jump_multiplier

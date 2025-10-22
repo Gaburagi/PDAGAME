@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="pdafinal"
-run/main_scene="uid://c8rup2d00o1wa"
+run/main_scene="uid://cdbi3oek6p38q"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Gamemanager="*res://SCRIPTS/gamemanager.gd"
 
 [importer_defaults]
 
@@ -65,6 +69,7 @@ move_down={
 2d_physics/layer_1="player"
 2d_physics/layer_9="oneway ground"
 2d_physics/layer_10="ground"
+2d_physics/layer_17="transitions"
 
 [rendering]
 

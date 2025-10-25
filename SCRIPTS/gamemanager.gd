@@ -22,10 +22,8 @@ func next_level():
 	else:
 		print("Area scene not found:", full_path)
 
-
 func set_up_area():
 	reset_coins()
-
 
 func add_coin():
 	coins += 1
@@ -33,7 +31,6 @@ func add_coin():
 		var portal := get_tree().get_first_node_in_group("area_exits") as AreaExit
 		if portal:
 			portal.open()
-
 
 func reset_coins():
 	coins = 0

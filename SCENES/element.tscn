@@ -6,13 +6,13 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_b640l"]
 radius = 16.03122
 
-[node name="Coin" type="Area2D"]
+[node name="Coin" type="Area2D" groups=["coins"]]
 script = ExtResource("1_x5xy2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_xahbi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["coins"]]
 shape = SubResource("CircleShape2D_b640l")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

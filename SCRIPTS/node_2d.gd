@@ -1,37 +1,67 @@
-extends Node2D
+extends Node
+class_name GameManager
 
-@export var player_controller : PlayerController
-@export var animation_player : AnimationPlayer
-@export var sprite : Sprite2D
-@export var cam : Camera2D
+var current_area := 1
+var area_path := "res://SCENES/Areas/"
+var hud : HUD
+var coins := 0
+var required_coins := 4  # how many to open the portal
 
-
-func _ready():
-	if cam:
-		# Enable smoothing properly (Godot 4.3+)
-		cam.set("smoothing.enabled", true)
-		cam.set("smoothing.speed", 5.0)
-		cam.set("smoothing.physic_step", true)  # syncs smoothing with physics to remove jitter
-
-
-# ⚙️ Important: use _physics_process, not _process
-func _physics_process(delta):
-	# Flip sprite based on direction
-	if player_controller.direction == 1:
-		sprite.flip_h = false
-	elif player_controller.direction == -1:
-		sprite.flip_h = true
-
-	# Determine animation based on velocity
-	if player_controller.velocity.y < 0.0:
-		animation_player.play("jump")
-	elif player_controller.velocity.y > 0.0:
-		animation_player.play("fall")
-	elif abs(player_controller.velocity.x) > 0.0:
-		animation_player.play("run")
+func _ready() -> void:
+	await get_tree().process_frame
+	hud = get_tree().get_first_node_in_group("hud")
+	if hud:
+		reset_coins()
 	else:
-		animation_player.play("idle")
+		print("HUD not found in scene tree.")
 
-	# Make camera follow smoothly in sync with physics
-	if cam:
-		cam.global_position = cam.global_position.lerp(player_controller.global_position, 0.15)
+
+func next_level():
+	current_area += 1
+	var full_path := area_path + "area_" + str(current_area) + ".tscn"
+
+	if ResourceLoader.exists(full_path):
+		get_tree().change_scene_to_file(full_path)
+		await get_tree().process_frame
+		set_up_area()
+		hud = get_tree().get_first_node_in_group("hud")
+		print("Moved to area " + str(current_area))
+	else:
+		print("Area not found:", full_path)
+
+
+func set_up_area():
+	reset_coins()
+
+
+# Adds a coin (+1)
+func add_coin():
+	coins += 1
+	_update_coin_state()
+
+
+# Removes a coin (-1)
+func remove_coin():
+	coins = max(0, coins - 1)  # don’t go below 0
+	_update_coin_state()
+
+
+# Internal: updates HUD + portal state
+func _update_coin_state():
+	if hud:
+		hud.update_coin(coins)
+
+	var portal := get_tree().get_first_node_in_group("area_exits") as AreaExit
+	if portal:
+		if coins >= required_coins:
+			portal.open()
+			if hud: hud.portal_opened()
+		else:
+			portal.close()
+			if hud: hud.portal_closed()
+
+
+func reset_coins():
+	coins = 0
+	_update_coin_state()
+	print("Coins reset.")

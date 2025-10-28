@@ -18,8 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Gamemanager="*res://SCRIPTS/gamemanager.gd"
-Hud="*res://SCRIPTS/hud.gd"
-HUDLayer="*res://SCENES/hud.tscn"
+Hud="res://SCRIPTS/hud.gd"
+HUDLayer="res://SCENES/hud.tscn"
 
 [importer_defaults]
 

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1loigkcm7ysf"]
+
+[ext_resource type="Script" uid="uid://dj8mm4nt6srs5" path="res://SCRIPTS/pop_coin.gd" id="1_v0ylw"]
+[ext_resource type="Texture2D" uid="uid://tn4mvflmag3v" path="res://ASSETS/A2.png" id="2_u8ib6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rlmqb"]
+radius = 16.0
+
+[node name="PopCoin" type="Area2D" groups=["pop_coins"]]
+script = ExtResource("1_v0ylw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_u8ib6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rlmqb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

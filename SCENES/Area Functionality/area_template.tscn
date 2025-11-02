@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://c8rup2d00o1wa"]
+[gd_scene load_steps=17 format=4 uid="uid://c8rup2d00o1wa"]
 
 [ext_resource type="PackedScene" uid="uid://cii1asg7o6lwx" path="res://SCENES/path_2d.tscn" id="1_kgpkt"]
 [ext_resource type="PackedScene" uid="uid://byw1a7gpe7aud" path="res://SCENES/player.tscn" id="2_jklmv"]
@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://c5df2v3sw4iia" path="res://SCENES/Area Functionality/area_exit.tscn" id="3_2efqq"]
 [ext_resource type="PackedScene" uid="uid://cgfwo6lj8fgx7" path="res://SCENES/element.tscn" id="4_pfqw8"]
 [ext_resource type="PackedScene" uid="uid://b1loigkcm7ysf" path="res://SCENES/pop_coin.tscn" id="6_kgpkt"]
+[ext_resource type="Texture2D" uid="uid://sg650ryamd3s" path="res://ASSETS/Bckg.png" id="7_8rtaq"]
+[ext_resource type="Texture2D" uid="uid://cnyv8c4e01oo8" path="res://ASSETS/Green_mountain.png" id="8_lvy62"]
+[ext_resource type="Texture2D" uid="uid://c3ti7trvevn7o" path="res://ASSETS/Clouds.png" id="9_moahd"]
+[ext_resource type="Texture2D" uid="uid://cd25ehuljdnwf" path="res://ASSETS/Green_Field.png" id="10_6c3rv"]
+[ext_resource type="Texture2D" uid="uid://d26lpjdoqco7o" path="res://ASSETS/Tree.png" id="11_kohdu"]
 
 [sub_resource type="TileSet" id="TileSet_kgqqh"]
 terrain_set_0/mode = 0
@@ -374,9 +379,59 @@ tile_set = SubResource("TileSet_jklmv")
 tile_map_data = PackedByteArray("AAAEAAMAAAACAAIAAAAEAAIAAAACAAEAAAAEAAEAAAACAAAAAAADAAMAAAABAAIAAAADAAIAAAABAAEAAAADAAEAAAABAAAAAAACAAMAAAABAAIAAAACAAIAAAABAAEAAAACAAEAAAABAAAAAAABAAMAAAABAAIAAAABAAIAAAABAAEAAAABAAEAAAABAAAAAAAAAAMAAAABAAIAAAAAAAIAAAABAAEAAAAAAAEAAAABAAAAAAD//wMAAAABAAIAAAD//wIAAAABAAEAAAD//wEAAAABAAAAAAD+/wMAAAABAAIAAAD+/wIAAAABAAEAAAD+/wEAAAABAAAAAAD9/wMAAAABAAIAAAD9/wIAAAABAAEAAAD9/wEAAAABAAAAAAD8/wMAAAAAAAIAAAD8/wIAAAAAAAEAAAD8/wEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_xdrte")
 
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="TileMap"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="TileMap/ParallaxBackground2"]
+motion_mirroring = Vector2(440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/ParallaxBackground2/ParallaxLayer"]
+position = Vector2(15.499994, -140.25)
+scale = Vector2(1.0270833, 1.0055146)
+texture = ExtResource("7_8rtaq")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="TileMap/ParallaxBackground2"]
+motion_mirroring = Vector2(440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/ParallaxBackground2/ParallaxLayer2"]
+position = Vector2(13, -138)
+scale = Vector2(1.0333334, 1.0735294)
+texture = ExtResource("8_lvy62")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="TileMap/ParallaxBackground2"]
+motion_mirroring = Vector2(440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/ParallaxBackground2/ParallaxLayer3"]
+position = Vector2(17.250004, -32.75)
+scale = Vector2(1.0364584, 1.0569853)
+texture = ExtResource("9_moahd")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="TileMap/ParallaxBackground2"]
+motion_mirroring = Vector2(440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/ParallaxBackground2/ParallaxLayer4"]
+position = Vector2(24, 59)
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="TileMap/ParallaxBackground2"]
+motion_mirroring = Vector2(440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/ParallaxBackground2/ParallaxLayer5"]
+position = Vector2(17.000002, 72)
+scale = Vector2(1.0354167, 0.96691173)
+texture = ExtResource("10_6c3rv")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="TileMap/ParallaxBackground2"]
+motion_mirroring = Vector2(440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/ParallaxBackground2/ParallaxLayer6"]
+position = Vector2(-22, 1.9999847)
+scale = Vector2(0.6354167, 0.7058824)
+texture = ExtResource("11_kohdu")
+
 [node name="Player" parent="." instance=ExtResource("2_jklmv")]
 collision_mask = 769
 speed = 5.0
+
+[node name="Camera2D2" type="Camera2D" parent="Player"]
 
 [node name="AreaExit" parent="." instance=ExtResource("3_2efqq")]
 position = Vector2(51, -32)

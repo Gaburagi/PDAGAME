@@ -385,13 +385,19 @@ tile_set = SubResource("TileSet_xdrte")
 motion_mirroring = Vector2(900, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="TileMap/ParallaxBackground2/ParallaxLayer"]
-position = Vector2(6, -141.99998)
-scale = Vector2(1.0270833, 1.0055146)
+position = Vector2(0, -72)
+scale = Vector2(2.938, 2.702)
+texture = ExtResource("7_8rtaq")
+
+[node name="Sprite2D3" type="Sprite2D" parent="TileMap/ParallaxBackground2/ParallaxLayer"]
+z_index = -1
+position = Vector2(1576, 1319.9999)
+scale = Vector2(9.702333, 15.153927)
 texture = ExtResource("7_8rtaq")
 
 [node name="Sprite2D2" type="Sprite2D" parent="TileMap/ParallaxBackground2/ParallaxLayer"]
-position = Vector2(452.82816, -122.00001)
-scale = Vector2(1.286784, 1.1387867)
+position = Vector2(2304.0002, -72)
+scale = Vector2(2.938, 2.702)
 texture = ExtResource("7_8rtaq")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="TileMap/ParallaxBackground2"]
